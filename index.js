@@ -64,7 +64,7 @@ const asyncData = require('./lib/async-data.js');
 //filmai
 //1.sukurti filma Robotas C
 //2. objekte nurodyti pavadinima, rezisieriu ir isleidimo metus 
-//3.perskaityti R
+//3.perskaityti  R
 //4. papildyti faila pagrindiniai aktoriai U
 //5. perkaitom ar pavyko irasyti aktorius R
 //6. atnaujinti rezisieriu U
