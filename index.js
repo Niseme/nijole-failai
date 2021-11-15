@@ -42,7 +42,7 @@ const asyncData = require('./lib/async-data.js');
 //     })
 // })
 
-// IIFE
+// IIFE 
 // (async () => {
 //     const bc = await asyncData.create('books', 'zuikis-puikis', { text: 'Simtas zuikiu susirinko' });
 //     console.log(bc);
@@ -73,41 +73,37 @@ const asyncData = require('./lib/async-data.js');
 //9. Perskaitom R
 
 (async () => {
+    const fimokurimas = await asyncData.create('filmai', 'Robotas', {
+        pavadinimas: 'Robotas',
+        rezisierius: ['Nijole'],
+        metai: 2021
+    });
+    const filmoskaitymas = await asyncData.read('filmai', 'Robotas');
+    console.log(filmoskaitymas);
 
-    const Robotas = {
-        pavadinimas: "Robotas",
-        rezisierius: "Nijole",
-        metai: 2021,
-    }
+    filmoskaitymas.aktoriai = ['Rimantas', 'Lukas']
+    const filmoupdate = await asyncData.update('filmai', 'Robotas', filmoskaitymas)
 
-    const filmas = await asyncData.create('filmai', 'Robotas', Robotas)
-    console.log(filmas);
+    const filmoskaitymas2 = await asyncData.read('filmai', 'Robotas');
+    console.log(filmoskaitymas2);
 
-    const filmasRead = await asyncData.read('filmai', 'Robotas');
-    console.log(filmasRead);
+    filmoskaitymas2.rezisierius.push('Rimantas');
+    const filmoupdate2 = await asyncData.update('filmai', 'Robotas', filmoskaitymas2)
 
-    filmasRead.aktoriai = ['Rimantas', 'Chuck', 'Xi'];
-    const filmasUpdate = await asyncData.update('filmai', 'Robotas', filmasRead);
-    console.log(filmasUpdate);
+    const filmoistrynimas = await asyncData.delete('filmai', 'Robotas');
+    console.log(filmoistrynimas);
+
+    const filmoskaitymas3 = await asyncData.read('filmai', 'Robotas');
+    console.log(filmoskaitymas3);
 
 
-    const filmasRead2 = await asyncData.read('filmai', 'Robotas');
-    console.log(filmasRead2);
-
-    filmasRead2.rezisierius = 'Nijole S.'
-    const filmasUpdate2 = await asyncData.update('filmai', 'Robotas', filmasRead2)
-    console.log(filmasUpdate2);
-
-    const filmasRead3 = await asyncData.read('filmai', 'Robotas');
-    console.log(filmasRead3);
-
-    const filmasDelete = await asyncData.delete('filmai', 'Robotas');
-    console.log(filmasDelete);
-
-    const filmasRead4 = await asyncData.read('filmai', 'Robotas');
-    console.log(filmasRead4);
 
 })();
+
+
+
+
+
 
 // br1.text += ' net zalia girele linko';
 //     const bu = await asyncData.update('books', 'zuikis-puikis', br1);
